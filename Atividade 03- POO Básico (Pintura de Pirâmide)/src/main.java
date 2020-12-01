@@ -6,26 +6,29 @@ public class main {
 
 		float apotema ;
 		int tipoTinta;
-		double al, qDeLataNecessario,litrosTinta, pagar;
+		double al, qDeLataNecessario,litrosTinta, pagar, alturaP;
 		
 		Scanner entrada = new Scanner (System.in);
 		Piramide pira = new Piramide ();
-		
+			
 		System.out.print("informe a altura da piramide:");
-		pira.hPiramide = entrada.nextFloat();
+		alturaP = entrada.nextFloat();
+		pira.sethPiramide(alturaP);
 		
 		System.out.print("Informe o valor da Apótema da base da pirâmide:");
 		apotema = entrada.nextFloat();
+		pira.setApotema(apotema);
 		
 		System.out.print("Agora informe o tipo de tinta que deseja pintar a piramide(1,2 ou 3):");
 		tipoTinta = entrada.nextInt();
+		pira.setTipoTinta(tipoTinta);
 		
-		al = Math.sqrt((apotema * apotema) + (pira.hPiramide * pira.hPiramide));
+		al = Math.sqrt((pira.getApotema() * pira.getApotema()) + (pira.gethPiramide() * pira.gethPiramide()));
 		
-		pira.baseTriangulo = apotema*2;
+		pira.baseTriangulo = pira.getApotema()*2;
 		pira.hTriangulo = al;
-		pira.areaBasePiramide = (apotema*2)*(apotema*2);
-		pira.areaTriangulo = (apotema*2) * al / 2 ;
+		pira.areaBasePiramide = (pira.getApotema()*2)*(pira.getApotema()*2);
+		pira.areaTriangulo = (pira.getApotema()*2) * al / 2 ;
 		litrosTinta =  pira.areaTotal() / 4.76  ; 
 		qDeLataNecessario = litrosTinta / 18;
 		
@@ -33,8 +36,9 @@ public class main {
 			qDeLataNecessario = (qDeLataNecessario - (qDeLataNecessario % 1)) + 1 ;
 		}
 	System.out.println("");
+	System.out.println("Tipo de tinta escolhida :" + "Tinta " + pira.getTipoTinta());
 	System.out.println("Area do triângulo é :" + pira.areaTriangulo);
-	System.out.println("Quantidade de lotros de tinta necessário: " + litrosTinta);
+	System.out.println("Quantidade de litros de tinta necessário: " + litrosTinta);
 	System.out.println("O volume da piramide é:" + pira.volumePiramide());
 	System.out.println("Quantidade de latas necessários: " + qDeLataNecessario);
 	
