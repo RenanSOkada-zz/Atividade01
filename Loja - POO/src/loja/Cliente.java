@@ -1,10 +1,19 @@
 package loja;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
 	
 	private String nome;
 	private String endereço;
 	private String CpfCliente;
+	
+	List<Usuario> IUsuario = new ArrayList<Usuario>();
+	
+	public boolean addUsuario (Usuario usuario) {
+		return IUsuario.add(usuario);
+		}
 	
 	public String getNome() {
 		return nome;
@@ -37,6 +46,9 @@ public class Cliente {
 		builder.append(", CpfCliente=");
 		builder.append(CpfCliente);
 		builder.append("]");
+		for (Usuario usuario : IUsuario) {
+			builder.append(usuario.toString());
+		}
 		return builder.toString();
 	}
 	

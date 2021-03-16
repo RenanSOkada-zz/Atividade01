@@ -9,11 +9,6 @@ public class Usuario {
 	private String EmailUsuario;
 	private String SenhaUsuario;
 	
-	List<Cliente> ICliente = new ArrayList<Cliente>();
-	
-	public boolean addCliente (Cliente cliente) {
-		return ICliente.add(cliente);
-		}
 	
 	List<Pedido> IPedido = new ArrayList<Pedido>();
 	
@@ -53,9 +48,6 @@ public class Usuario {
 		builder.append(", SenhaUsuario=");
 		builder.append(SenhaUsuario);
 		builder.append("]");
-		for (Cliente cliente : ICliente) {
-			builder.append(cliente.toString());
-		}
 		for (Pedido pedido : IPedido) {
 			builder.append(pedido.toString());
 		}

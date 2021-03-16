@@ -1,15 +1,30 @@
 package loja;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pagamento {
 	private double quantia;
 	private String Status;
 	
+	List<Cartao> Icartao = new ArrayList<Cartao>();
+	
+	List<Dinheiro> Idinheiro = new ArrayList<Dinheiro>();
+	
 	public Pagamento() {
 	}
-	
+		
 	public Pagamento(double quantia, String Status) {
 		setQuantia(quantia);
 		setStatus(Status);
+	}	
+	
+	public boolean addCartao(Cartao cartao) {
+		return Icartao.add(cartao);
+	}
+	
+	public boolean addDinheiro(Dinheiro dinheiro) {
+		return Idinheiro.add(dinheiro);
 	}
 	
 	public double getQuantia() {
@@ -35,6 +50,12 @@ public class Pagamento {
 		builder.append(", Status=");
 		builder.append(Status);
 		builder.append("]");
+		for (Cartao cartao : Icartao) {
+			builder.append(cartao.toString());
+		}
+		for (Dinheiro dinheiro : Idinheiro) {
+			builder.append(dinheiro.toString());
+		}
 		return builder.toString();
 	}
 	

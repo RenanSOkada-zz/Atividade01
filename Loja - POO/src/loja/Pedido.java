@@ -10,25 +10,27 @@ public class Pedido {
 	
 	List<TipoItem> ITipoItem = new ArrayList<TipoItem>();
 	
+	List<Pagamento> Ipagamento = new ArrayList<Pagamento>();
+	
+	public Pedido() {
+	}
+	public Pedido(String Data, String Status) {
+		setData(Data);
+		setStatus(Status);
+	}
+	
 	public boolean addITipoItem (String Descrição, int CodigoItem, double preço, int quantidade) {
 		TipoItem i = new TipoItem( Descrição,CodigoItem, preço, quantidade);
 
 		return 	ITipoItem.add(i);
 	}
 	
-	List<cartao> Icartao = new ArrayList<cartao>();
-	
-	public boolean addCartao(double valor, int NumCartao, double quantia, String Status) {
-		cartao c = new cartao( valor,  NumCartao,  quantia,  Status);
-		return Icartao.add(c);
+	public boolean addPagamento(double quantia, String Status) {
+		Pagamento p = new Pagamento( quantia,  Status);
+		return Ipagamento.add(p);
 	}
 	
-	List<dinheiro> Idinheiro = new ArrayList<dinheiro>();
-	
-	public boolean addDinheiro(double valor, double quantia, String Status) {
-		dinheiro d = new dinheiro( valor,  quantia,  Status);
-		return Idinheiro.add(d);
-	}
+
 	
 	public String getData() {
 		return Data;
@@ -55,11 +57,8 @@ public class Pedido {
 		for (TipoItem tipoItem : ITipoItem) {
 			builder.append(tipoItem.toString());
 		}
-		for (cartao Cartao : Icartao) {
-			builder.append(Cartao.toString());
-		}
-		for (dinheiro Dinheiro : Idinheiro) {
-			builder.append(Dinheiro.toString());
+		for (Pagamento pagamento : Ipagamento) {
+			builder.append(pagamento.toString());
 		}
 		return builder.toString();
 	}
